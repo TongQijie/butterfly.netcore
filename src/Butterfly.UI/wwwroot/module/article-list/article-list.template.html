@@ -1,0 +1,27 @@
+﻿<div class="content-wrapper">
+    <div class="main-post-list">
+        <div class="content-wrapper__inner">
+            <ol class="post-list">
+                <li ng-repeat="article in $ctrl.articles" class="article-list-item">
+                    <h2 class="post-list__post-title post-title">
+                        <a href="./article/{{article.id}}" title="{{article.title}}">{{article.title}}</a>
+                    </h2>
+                    <p class="excerpt">{{article.abstract}}</p>
+                    <div class="post-list__meta">
+                        <time datetime="{{article.creationDate}}" class="post-list__meta--date date">{{article.creationDate}}</time>•
+                        <a class="btn-border-small" href="./article/{{article.id}}">继续阅读</a>
+                        <hr class="post-list__divider">
+                    </div>
+                </li>
+            </ol>
+            <hr class="post-list__divider ">
+            <nav class="pagination" role="navigation" data-pagenumber="{{$ctrl.paging.pn}}" data-totalpages="{{$ctrl.paging.tp}}">
+                <a class="newer-posts pagination__newer btn btn-small btn-tertiary" 
+                   href="./page/{{$ctrl.paging.pn - 1}}" style="{{$ctrl.paging.pn > 1 ? '' : 'display:none'}}">← 最近</a>
+                <span class="pagination__page-number">{{$ctrl.paging.pn}} / {{$ctrl.paging.tp}}</span>
+                <a class="older-posts pagination__older btn btn-small btn-tertiary" 
+                   href="./page/{{$ctrl.paging.pn + 1}}" style="{{$ctrl.paging.pn < $ctrl.paging.tp ? '' : 'display:none'}}">更早 →</a>
+            </nav>
+        </div>
+    </div>
+</div>

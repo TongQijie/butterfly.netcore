@@ -1,0 +1,55 @@
+﻿<style>
+    .ta-toolbar {
+        background-color: #F0F0F0;
+        padding: 10px 10px 5px;
+        margin-left: 0px; /* Override bootstrap */
+        border: 1px solid #EEE;
+    }
+
+        .ta-toolbar .btn-group {
+            margin-bottom: 5px;
+        }
+
+            .ta-toolbar .btn-group button {
+                line-height: 14px;
+            }
+
+            .ta-toolbar .btn-group div {
+                line-height: 14px;
+            }
+
+    .ta-editor {
+        margin-top: 10px;
+    }
+
+    .ta-editor, .white-box {
+        padding: 10px;
+        background-color: #FFF;
+        border: 1px solid #EEE;
+    }
+
+    textarea.ta-bind {
+        width: 100%;
+    }
+</style>
+
+<div class="content-wrapper">
+    <div class="content-wrapper__inner" style="padding-top:20px;">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="article title" style="width:100%;"
+                   ng-model="article.title">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" ng-model="article.abstract" placeholder="article abstract"></textarea>
+        </div>
+        <div text-angular ng-model="htmlVariable"></div>
+        <div class="form-group" style="margin-top:15px;">
+            <input type="password" class="form-control" placeholder="api key" style="width:100%;"
+                   ng-model="apiKey">
+        </div>
+        <div style="padding:10px 0px;">
+            <button class="btn btn-default" id="saveButton" ng-click="$ctrl.save()">save</button>
+            <button class="btn btn-link" disabled id="promptText"></button>
+        </div>
+    </div>
+</div>
