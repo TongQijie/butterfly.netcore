@@ -32,6 +32,41 @@
       "pattern": "^Api/",
       "value": "",
       "mode": "Replace"
+    },
+    {
+      "pattern": "^Page$",
+      "value": "",
+      "mode": "Override"
+    },
+    {
+      "pattern": "^Page/",
+      "value": "",
+      "mode": "Override"
+    },
+    {
+      "pattern": "^Page$",
+      "value": "",
+      "mode": "Override"
+    },
+    {
+      "pattern": "^Article$",
+      "value": "",
+      "mode": "Override"
+    },
+    {
+      "pattern": "^Article/",
+      "value": "",
+      "mode": "Override"
+    },
+    {
+      "pattern": "^Editor$",
+      "value": "",
+      "mode": "Override"
+    },
+    {
+      "pattern": "^Editor/",
+      "value": "",
+      "mode": "Override"
     }
   ]
 }

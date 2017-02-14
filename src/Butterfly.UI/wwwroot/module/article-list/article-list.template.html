@@ -15,12 +15,12 @@
                 </li>
             </ol>
             <hr class="post-list__divider ">
-            <nav class="pagination" role="navigation" data-pagenumber="{{$ctrl.paging.pn}}" data-totalpages="{{$ctrl.paging.tp}}">
+            <nav class="pagination" role="navigation" data-pagenumber="{{$ctrl.paging.PageNumber}}" data-totalpages="{{$ctrl.paging.TotalPages}}">
                 <a class="newer-posts pagination__newer btn btn-small btn-tertiary" 
-                   href="./page/{{$ctrl.paging.pn - 1}}" style="{{$ctrl.paging.pn > 1 ? '' : 'display:none'}}">← 最近</a>
-                <span class="pagination__page-number">{{$ctrl.paging.pn}} / {{$ctrl.paging.tp}}</span>
+                   href="./page/{{$ctrl.paging.PageNumber - 1}}" style="{{$ctrl.paging.PageNumber > 1 ? '' : 'display:none'}}">← 最近</a>
+                <span class="pagination__page-number">{{$ctrl.paging.PageNumber}} / {{$ctrl.paging.TotalPages}}</span>
                 <a class="older-posts pagination__older btn btn-small btn-tertiary" 
-                   href="./page/{{$ctrl.paging.pn + 1}}" style="{{$ctrl.paging.pn < $ctrl.paging.tp ? '' : 'display:none'}}">更早 →</a>
+                   href="./page/{{$ctrl.paging.PageNumber + 1}}" style="{{$ctrl.paging.PageNumber < $ctrl.paging.TotalPages ? '' : 'display:none'}}">更早 →</a>
             </nav>
         </div>
     </div>

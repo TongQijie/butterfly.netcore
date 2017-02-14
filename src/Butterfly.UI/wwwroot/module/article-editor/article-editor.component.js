@@ -10,7 +10,7 @@
 
                 var action = ($scope.article.id != undefined && $scope.article.id.length > 0) ? 'modify' : 'create';
 
-                $http.post('Article/Operate?action=' + action + '&key=' + $scope.apiKey, {
+                $http.post('Api/Article/OperateArticle?action=' + action + '&apikey=' + $scope.apiKey, {
                     'id': $scope.article.id,
                     'title': $scope.article.title,
                     'abstract': $scope.article.abstract,
@@ -25,12 +25,12 @@
                     var date = new Date();
                     var timeString = ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2) + ':' + ('0' + date.getSeconds()).slice(-2);
                     if (response.status == 200) {
-                        if (response.data.error == undefined || response.data.error == false) {
-                            $scope.article.id = response.data.data.id;
+                        if (response.data.Succeeded) {
+                            $scope.article.id = response.data.Data.id;
                             $('#promptText').html('succeeded. ' + timeString);
                         }
                         else {
-                            $('#promptText').html('failed. ' + response.data.msg + ' ' + timeString);
+                            $('#promptText').html('failed. ' + response.data.Message + ' ' + timeString);
                         }
                     }
                     else {
@@ -60,12 +60,12 @@
                 return;
             }
 
-            $http.get('as/gabi?id=' + articleId)
+            $http.get('Api/Article/GetArticleById?articleId=' + articleId)
               .then(function (response) {
                   if (response.status == 200) {
-                      if (response.data.error == undefined || response.data.error == false) {
-                          $scope.article = response.data.data;
-                          $scope.htmlVariable = response.data.data.content;
+                      if (response.data.Succeeded) {
+                          $scope.article = response.data.Data;
+                          $scope.htmlVariable = response.data.Data.content;
                       }
                       else {
                           // business error
