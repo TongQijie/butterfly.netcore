@@ -10,10 +10,6 @@
     "Butterfly.Api": {
       "version": "1.0.0",
       "target": "project"
-    },
-    "Butterfly.Configuration": {
-      "version": "1.0.0",
-      "target": "project"
     }
   },
 
