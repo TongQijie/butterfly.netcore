@@ -8,7 +8,7 @@ angular.module('articleDetail').component('articleDetail', {
           $http.get('Api/Article/GetArticleById?articleId=' + $routeParams.articleId)
               .then(function (response) {
                   if (response.status == 200) {
-                      if (response.data.error == undefined || response.data.error == false) {
+                      if (response.data.Succeeded) {
                           self.article = response.data.Data;
                           $scope.html = response.data.Data.content;
                       }

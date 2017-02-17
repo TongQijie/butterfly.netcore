@@ -13,7 +13,6 @@
                 $http.post('Api/Article/OperateArticle?action=' + action + '&apikey=' + $scope.apiKey, {
                     'id': $scope.article.id,
                     'title': $scope.article.title,
-                    'abstract': $scope.article.abstract,
                     'content': $scope.htmlVariable
                 }, {
                     headers: {
@@ -51,7 +50,6 @@
             if (articleId == undefined) {
                 $scope.article = {
                     'title': '',
-                    'abstract': '',
                 };
 
                 $scope.apiKey = '';
