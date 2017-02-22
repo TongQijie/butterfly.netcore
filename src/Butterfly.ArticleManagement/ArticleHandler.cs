@@ -1,14 +1,16 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 using Guru.ExtensionMethod;
 using Guru.DependencyInjection;
+using Guru.Formatter.Abstractions;
 using Guru.DependencyInjection.Abstractions;
 
 using Butterfly.ServiceModel;
 using Butterfly.Configuration;
-using Guru.Formatter.Abstractions;
+using System.Net;
 
 namespace Butterfly.ArticleManagement
 {
@@ -53,19 +55,25 @@ namespace Butterfly.ArticleManagement
                 };
             }
 
-            var articles = (ContainerEntry.Resolve(typeof(Article)) as object[]).Select(x => x as Article);
+            var articles = _FileManager.Many<Article>();
 
             return new ApiResponse()
             {
                 Succeeded = true,
                 Data = articles.ToList().OrderByDescending(x => x.CreationDate)
                     .Skip(request.Paging.PageSize * (request.Paging.PageNumber - 1))
-                    .Take(request.Paging.PageSize).ToArray(),
+                    .Take(request.Paging.PageSize).Select(x => new Article()
+                    {
+                        Id = x.Id,
+                        CreationDate = x.CreationDate,
+                        Title = x.Title,
+                        Abstract = x.Abstract,
+                    }).ToArray(),
                 Paging = new Paging()
                 {
                     PageNumber = request.Paging.PageNumber,
                     PageSize = request.Paging.PageSize,
-                    TotalPages = articles.Length / request.Paging.PageNumber + (articles.Length % request.Paging.PageNumber) > 0 ? 1 : 0,
+                    TotalPages = articles.Length / request.Paging.PageSize + ((articles.Length % request.Paging.PageSize) > 0 ? 1 : 0),
                 },
             };
         }
@@ -95,6 +103,7 @@ namespace Butterfly.ArticleManagement
 
                 var random = Path.GetRandomFileName();
                 article.Id = random.Substring(0, random.IndexOf('.'));
+                article.Abstract = GetAbstract(article.Content ?? string.Empty);
                 article.CreationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 article.ModifiedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
@@ -131,8 +140,8 @@ namespace Butterfly.ArticleManagement
 
                 var clone = exists.DeepCopy<Article>();
                 clone.Title = article.Title;
-                clone.Abstract = article.Abstract;
                 clone.Content = article.Content;
+                clone.Abstract = GetAbstract(article.Content ?? string.Empty);
                 clone.ModifiedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 _JsonFormatter.WriteObject(clone, $"./data/{article.Id}.json".FullPath());
@@ -153,6 +162,16 @@ namespace Butterfly.ArticleManagement
                     Message = "action is not valid.",
                 };
             }
+        }
+
+        private string GetAbstract(string content)
+        {
+            var a = WebUtility.HtmlDecode(Regex.Replace(content, "<(.|\n)*?>", string.Empty));
+            if (a.Length > 300)
+            {
+                a = a.Substring(0, 300) + "...";
+            }
+            return a;
         }
     }
 }
