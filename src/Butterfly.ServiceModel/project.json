@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "dependencies": {
-    "Guru": "1.0.2"
+    "Guru": "1.0.3"
   },
   "frameworks": {
     "netstandard1.6": {

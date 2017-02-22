@@ -5,7 +5,7 @@ using Guru.Middleware.RESTfulService;
 
 namespace Butterfly.Api
 {
-    [Service("Article")]
+    [Service("Article", Prefix = "Api")]
     public class ArticleService
     {
         private readonly IArticleHandler _Handler;

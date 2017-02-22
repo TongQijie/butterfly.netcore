@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "dependencies": {
-    "Guru": "1.0.2",
+    "Guru": "1.0.3",
     "Butterfly.ServiceModel": {
       "target": "project",
       "version": "1.0.0"

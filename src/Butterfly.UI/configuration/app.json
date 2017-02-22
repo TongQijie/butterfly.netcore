@@ -25,14 +25,13 @@
     {
       "type": "jpg",
       "content": "image/jpeg"
+    },
+    {
+      "type": "ico",
+      "content": "image/x-icon"
     }
   ],
   "rewrites": [
-    {
-      "pattern": "^Api/",
-      "value": "",
-      "mode": "Replace"
-    },
     {
       "pattern": "^Page$",
       "value": "",
@@ -40,11 +39,6 @@
     },
     {
       "pattern": "^Page/",
-      "value": "",
-      "mode": "Override"
-    },
-    {
-      "pattern": "^Page$",
       "value": "",
       "mode": "Override"
     },
