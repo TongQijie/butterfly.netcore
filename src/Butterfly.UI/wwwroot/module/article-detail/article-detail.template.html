@@ -1,9 +1,19 @@
-﻿<div class="content-wrapper">
+﻿<style>
+    .editBtn {
+        font-size: .8em;
+        color: #c7c7c7;
+        margin-left: 6px;
+    }
+</style>
+
+<div class="content-wrapper">
     <div class="content-wrapper__inner">
         <article class="post-container post-container--single">
             <header class="post-header">
                 <div class="post-meta">
-                    <time datetime="{{$ctrl.article.creationDate}}" class="post-meta__date date">{{$ctrl.article.creationDate}}</time> •
+                    <time datetime="{{$ctrl.article.creationDate}}" class="post-meta__date date">{{$ctrl.article.creationDate}}</time>
+                    <span>•</span>
+                    <a class="editBtn" href="./editor/{{$ctrl.article.id}}">编辑</a>
                 </div>
                 <h1 class="post-title">{{$ctrl.article.title}}</h1>
             </header>
