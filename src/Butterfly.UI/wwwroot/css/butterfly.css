@@ -1,0 +1,109 @@
+.search-area {
+    width: 70%;
+    margin-left: 30%;
+    background-color: #e6e6e6;
+    z-index: 10000;
+}
+
+.search-popup {
+    position: absolute;
+    width: 70%;
+}
+
+.search-box {
+    display: inline-block;
+    height: 50px;
+    padding: 0px 10%;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.search-result-list {
+    list-style: none;
+    margin: 0px;
+}
+
+.search-result-list li {
+    margin: 0px;
+    height: 80px;
+    background-color: #e6e6e6;
+    border-top: 1px solid #f7f7f7;
+}
+
+.search-result-list li:hover {
+    background-color: #c7c7c7;
+}
+
+.search-result-item {
+    margin: 0px 10%;
+    cursor: pointer;
+}
+
+.search-result-item-title {
+    line-height: 50px;
+    font-size: 28px;
+    margin: 0px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.search-result-item-abs {
+    line-height: 20px;
+    font-size: 18px;
+    margin: 0px;
+    height: 20px;
+    overflow: hidden;
+}
+
+@media (max-width: 960px) {
+    .search-area {
+        width: 100%;
+        margin: 0px;
+    }
+
+    .search-popup {
+        width: 100%;
+    }
+
+    .search-result-item-title {
+        font-size: 20px;
+    }
+
+    .search-result-item-abs {
+        font-size: 14px;
+    }
+}
+
+.ta-toolbar {
+    background-color: #F0F0F0;
+    padding: 10px 10px 5px;
+    margin-left: 0px; /* Override bootstrap */
+    border: 1px solid #EEE;
+}
+
+    .ta-toolbar .btn-group {
+        margin-bottom: 5px;
+    }
+
+        .ta-toolbar .btn-group button {
+            line-height: 14px;
+        }
+
+        .ta-toolbar .btn-group div {
+            line-height: 14px;
+        }
+
+.ta-editor {
+    margin-top: 10px;
+}
+
+.ta-editor, .white-box {
+    padding: 10px;
+    background-color: #FFF;
+    border: 1px solid #EEE;
+}
+
+textarea.ta-bind {
+    width: 100%;
+}

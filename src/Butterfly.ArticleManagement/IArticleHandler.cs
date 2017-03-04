@@ -9,5 +9,7 @@ namespace Butterfly.ArticleManagement
         ApiResponse GetArticleById(ApiRequest request);
 
         ApiResponse OperateArticle(ApiRequest request);
+
+        ApiResponse GetSearchResult(ApiRequest request);
     }
 }

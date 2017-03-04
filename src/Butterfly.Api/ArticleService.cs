@@ -36,6 +36,18 @@ namespace Butterfly.Api
             });
         }
 
+        [Method(Name = "GetSearchResult", HttpVerb = HttpVerb.GET, Response = ContentType.Json)]
+        public ApiResponse GetSearchResult(string keywords)
+        {
+            return _Handler.GetSearchResult(new ApiRequest()
+            {
+                Items = new KeyValueItem[]
+                {
+                    new KeyValueItem() { Key = "keywords", Value = keywords }
+                },
+            });
+        }
+
         [Method(Name = "OperateArticle", HttpVerb = HttpVerb.POST, Response = ContentType.Json)]
         public ApiResponse OperateArticle(
             [Parameter(Source = ParameterSource.Body)] Article article,

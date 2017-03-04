@@ -1,4 +1,18 @@
-﻿<div class="content-wrapper">
+﻿<div class="search-area">
+    <input class="search-box" placeholder="search..." ng-model="keywords" ng-change="keywordChanged()"/>
+    <div class="search-popup">
+        <ul class="search-result-list">
+            <li ng-repeat="article in $ctrl.searchResult">
+                <div class="search-result-item" ng-click="resultItemClicked(article)">
+                    <p class="search-result-item-title">{{article.title}}</p>
+                    <p class="search-result-item-abs">{{article.abstract}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="content-wrapper">
+
     <div class="main-post-list">
         <div class="content-wrapper__inner">
             <ol class="post-list">
@@ -16,11 +30,9 @@
             </ol>
             <hr class="post-list__divider ">
             <nav class="pagination" role="navigation" data-pagenumber="{{$ctrl.paging.PageNumber}}" data-totalpages="{{$ctrl.paging.TotalPages}}">
-                <a class="newer-posts pagination__newer btn btn-small btn-tertiary" 
-                   href="./page/{{$ctrl.paging.PageNumber - 1}}" style="{{$ctrl.paging.PageNumber > 1 ? '' : 'display:none'}}">← 最近</a>
+                <a class="newer-posts pagination__newer btn btn-small btn-tertiary" href="./page/{{$ctrl.paging.PageNumber - 1}}" style="{{$ctrl.paging.PageNumber > 1 ? '' : 'display:none'}}">← 最近</a>
                 <span class="pagination__page-number">{{$ctrl.paging.PageNumber}} / {{$ctrl.paging.TotalPages}}</span>
-                <a class="older-posts pagination__older btn btn-small btn-tertiary" 
-                   href="./page/{{$ctrl.paging.PageNumber + 1}}" style="{{$ctrl.paging.PageNumber < $ctrl.paging.TotalPages ? '' : 'display:none'}}">更早 →</a>
+                <a class="older-posts pagination__older btn btn-small btn-tertiary" href="./page/{{$ctrl.paging.PageNumber + 1}}" style="{{$ctrl.paging.PageNumber < $ctrl.paging.TotalPages ? '' : 'display:none'}}">更早 →</a>
             </nav>
         </div>
     </div>

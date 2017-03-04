@@ -1,5 +1,8 @@
 {
   "version": "1.0.0",
+  "buildOptions": {
+    "debugType": "portable"
+  },
   "dependencies": {
     "Guru": "1.0.3",
     "Butterfly.ServiceModel": {

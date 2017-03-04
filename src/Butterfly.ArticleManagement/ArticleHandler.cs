@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Net;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -10,7 +11,6 @@ using Guru.DependencyInjection.Abstractions;
 
 using Butterfly.ServiceModel;
 using Butterfly.Configuration;
-using System.Net;
 
 namespace Butterfly.ArticleManagement
 {
@@ -37,7 +37,7 @@ namespace Butterfly.ArticleManagement
                     Message = "article id is not specified.",
                 };
             }
-            
+
             return new ApiResponse()
             {
                 Succeeded = true,
@@ -75,6 +75,42 @@ namespace Butterfly.ArticleManagement
                     PageSize = request.Paging.PageSize,
                     TotalPages = articles.Length / request.Paging.PageSize + ((articles.Length % request.Paging.PageSize) > 0 ? 1 : 0),
                 },
+            };
+        }
+
+        public ApiResponse GetSearchResult(ApiRequest request)
+        {
+            var item = request.Items.FirstOrDefault(x => x.Key == "keywords");
+            if (item == null || !item.Value.HasValue())
+            {
+                return new ApiResponse()
+                {
+                    Data = new Article[0],
+                    Succeeded = true,
+                };
+            }
+
+            var fields = item.Value.SplitByChar(' ');
+            if (!fields.HasLength())
+            {
+                return new ApiResponse()
+                {
+                    Data = new Article[0],
+                    Succeeded = true,
+                };
+            }
+
+            return new ApiResponse()
+            {
+                Data = _FileManager.Many<Article>().Where(x => fields.Exists(y => x.Title.ContainsIgnoreCase(y) || x.Content.ContainsIgnoreCase(y)))
+                    .Select(x => new Article()
+                    {
+                        Id = x.Id,
+                        Title = x.Title,
+                        Abstract = x.Abstract.Length > 50 ? (x.Abstract.Substring(0, 50) + "...") : x.Abstract,
+                    })
+                    .Take(10).ToArray(),
+                Succeeded = true,
             };
         }
 
