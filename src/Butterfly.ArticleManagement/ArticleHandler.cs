@@ -102,14 +102,20 @@ namespace Butterfly.ArticleManagement
 
             return new ApiResponse()
             {
-                Data = _FileManager.Many<Article>().Where(x => fields.Exists(y => x.Title.ContainsIgnoreCase(y) || x.Content.ContainsIgnoreCase(y)))
-                    .Select(x => new Article()
+                Data = _FileManager.Many<Article>()
+                    .Select(x => new 
                     {
-                        Id = x.Id,
-                        Title = x.Title,
-                        Abstract = x.Abstract.Length > 50 ? (x.Abstract.Substring(0, 50) + "...") : x.Abstract,
+                        Weight = fields.Count(y => x.Title.ContainsIgnoreCase(y)) * 3 +
+                                 fields.Count(y => WebUtility.HtmlDecode(Regex.Replace(x.Content, "<(.|\n)*?>", string.Empty)).ContainsIgnoreCase(y)),
+                        Article = new Article()
+                        {
+                            Id = x.Id,
+                            Title = x.Title,
+                            Abstract = x.Abstract.Length > 50 ? (x.Abstract.Substring(0, 50) + "...") : x.Abstract,
+                        }
                     })
-                    .Take(10).ToArray(),
+                    .Where(x => x.Weight > 0).OrderByDescending(x => x.Weight)
+                    .Select(x => x.Article).Take(10).ToArray(),
                 Succeeded = true,
             };
         }
