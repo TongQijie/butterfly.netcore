@@ -12,10 +12,6 @@
       "target": "project"
     }
   },
-  
-  "buildOptions": {
-    "debugType": "portable"
-  },
 
   "tools": {
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
@@ -30,6 +26,7 @@
   },
 
   "buildOptions": {
+    "debugType": "portable",
     "emitEntryPoint": true,
     "preserveCompilationContext": false,
     "copyToOutput": {

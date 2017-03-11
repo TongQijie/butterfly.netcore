@@ -12,8 +12,7 @@
     </div>
 </div>
 <div class="content-wrapper">
-
-    <div class="main-post-list">
+    <div class="main-post-list" ng-hide="keywords.length > 0">
         <div class="content-wrapper__inner">
             <ol class="post-list">
                 <li ng-repeat="article in $ctrl.articles" class="article-list-item">
