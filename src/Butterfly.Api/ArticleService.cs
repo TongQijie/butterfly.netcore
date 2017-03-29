@@ -1,7 +1,11 @@
 using Butterfly.ServiceModel;
 using Butterfly.ArticleManagement;
 
+using Guru.DependencyInjection;
 using Guru.Middleware.RESTfulService;
+using Butterfly.Configuration;
+using System;
+using System.IO;
 
 namespace Butterfly.Api
 {
@@ -10,9 +14,12 @@ namespace Butterfly.Api
     {
         private readonly IArticleHandler _Handler;
 
-        public ArticleService(IArticleHandler handler)
+        private readonly IFileManager _FileManager;
+
+        public ArticleService(IArticleHandler handler, IFileManager fileManager)
         {
             _Handler = handler;
+            _FileManager = fileManager;
         }
 
         [Method(Name = "GetArticlesByPage", HttpVerb = HttpVerb.GET, Response = ContentType.Json)]
@@ -51,7 +58,7 @@ namespace Butterfly.Api
         [Method(Name = "OperateArticle", HttpVerb = HttpVerb.POST, Response = ContentType.Json)]
         public ApiResponse OperateArticle(
             [Parameter(Source = ParameterSource.Body)] Article article,
-            [Parameter(Source = ParameterSource.QueryString)] string action, 
+            [Parameter(Source = ParameterSource.QueryString)] string action,
             [Parameter(Source = ParameterSource.QueryString)] string apiKey)
         {
             return _Handler.OperateArticle(new ApiRequest<Article>()
@@ -63,6 +70,34 @@ namespace Butterfly.Api
                     new KeyValueItem() { Key = "apikey", Value = apiKey },
                 },
             });
+        }
+
+        [Method(Name = "UploadFile", HttpVerb = HttpVerb.POST, Request = ContentType.Json, Response = ContentType.Json)]
+        public ApiResponse UploadFile(
+            [Parameter(Source = ParameterSource.Body)] FileEntity file,
+            [Parameter(Source = ParameterSource.QueryString)] string apiKey)
+        {
+            if (_FileManager.Single<IApiConfiguration>().ApiKey == apiKey)
+            {
+                var data = Convert.FromBase64String(file.Base64);
+                using (var outputStream = new FileStream(file.Path, FileMode.Create, FileAccess.Write))
+                {
+                    outputStream.Write(data, 0, data.Length);
+                }
+
+                return new ApiResponse()
+                {
+                    Succeeded = true,
+                };
+            }
+            else
+            {
+                return new ApiResponse()
+                {
+                    Message = "appkey is not valid.",
+                };
+            }
+
         }
     }
 }
