@@ -1,5 +1,5 @@
 ﻿<div class="search-area">
-    <input class="search-box" placeholder="search..." ng-model="keywords" ng-change="keywordChanged()"/>
+    <input class="search-box" placeholder="search..." ng-model="keywords" ng-change="keywordChanged()" />
     <div class="search-popup">
         <ul class="search-result-list">
             <li ng-repeat="article in $ctrl.searchResult">
@@ -12,7 +12,12 @@
     </div>
 </div>
 <div class="content-wrapper">
-    <div class="main-post-list" ng-hide="keywords.length > 0">
+    <div class="bubblingG" ng-hide="loading == false">
+        <span id="bubblingG_1"></span>
+        <span id="bubblingG_2"></span>
+        <span id="bubblingG_3"></span>
+    </div>
+    <div class="main-post-list" ng-hide="keywords.length > 0 || loading">
         <div class="content-wrapper__inner">
             <ol class="post-list">
                 <li ng-repeat="article in $ctrl.articles" class="article-list-item">

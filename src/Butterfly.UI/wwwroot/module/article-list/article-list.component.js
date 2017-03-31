@@ -57,6 +57,8 @@
                 return;
             }
 
+            $scope.loading = true;
+
             $http.get('Api/Article/GetArticlesByPage?PageNumber=' + pageNumber, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,6 +77,8 @@
                 else {
                     // network error
                 }
+
+                $scope.loading = false;
             });
         }]
 });
