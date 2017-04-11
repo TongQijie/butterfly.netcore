@@ -23,7 +23,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.0.3" />
-    <PackageReference Include="Guru" Version="1.0.9" />
+    <PackageReference Include="Guru" Version="1.0.10" />
   </ItemGroup>
 
 </Project>

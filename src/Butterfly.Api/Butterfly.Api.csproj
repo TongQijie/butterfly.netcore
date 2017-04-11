@@ -11,10 +11,11 @@
   <ItemGroup>
     <ProjectReference Include="../Butterfly.ServiceModel/Butterfly.ServiceModel.csproj" />
     <ProjectReference Include="../Butterfly.ArticleManagement/Butterfly.ArticleManagement.csproj" />
+    <ProjectReference Include="../Butterfly.MonitorManagement/Butterfly.MonitorManagement.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Guru" Version="1.0.9" />
+    <PackageReference Include="Guru" Version="1.0.10" />
   </ItemGroup>
 
 </Project>
