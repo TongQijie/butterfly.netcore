@@ -3,5 +3,6 @@
     'ngAnimate',
     'articleList',
     'articleDetail',
-    'articleEditor'
+    'articleEditor',
+    'markdownEditor'
 ]);

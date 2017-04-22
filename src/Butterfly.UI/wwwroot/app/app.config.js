@@ -10,8 +10,8 @@
           when('/editor/:articleId?', {
               template: '<article-editor></article-editor>'
           }).
-          when('/auth/:id?', {
-              template: '<auth></auth>'
+          when('/markdown/:articleId?', {
+              template: '<markdown-editor></markdown-editor>'
           }).
           otherwise('/page/1');
 

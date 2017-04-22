@@ -1,0 +1,33 @@
+﻿<div class="content-wrapper">
+    <div class="content-wrapper__inner" style="padding-top:20px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-xs-12" style="padding-left:0px;">
+                    <div class="row">
+                        <textarea ui-markdown-editor="editorOptions" ng-model="markdownData" style="padding: 1em;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 3px;
+    font-size: 1.2em;
+    color: rgb(102, 102, 102);"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="form-group" style="margin-top:15px;">
+                            <input type="password" class="form-control" placeholder="api key" style="width:100%;" ng-model="apiKey">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <button class="btn btn-default" id="saveButton" ng-click="$ctrl.save()">save</button>
+                            <button class="btn btn-link" disabled id="promptText"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <div ng-bind-markdown="markdownData">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

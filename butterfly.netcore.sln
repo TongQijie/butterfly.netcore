@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butterfly.UI", "src\Butterfly.UI\Butterfly.UI.csproj", "{4F016629-32B6-4878-A147-96EF155DCEF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butterfly.Api", "src\Butterfly.Api\Butterfly.Api.csproj", "{B41FA630-E3EC-4474-A29C-1340E4DC6BDD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butterfly.ArticleManagement", "src\Butterfly.ArticleManagement\Butterfly.ArticleManagement.csproj", "{672C0FE9-7888-4B8E-8A9C-0788E2BF6E46}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butterfly.Configuration", "src\Butterfly.Configuration\Butterfly.Configuration.csproj", "{6C1D437B-956B-477D-8A01-3649EDC89261}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butterfly.MonitorManagement", "src\Butterfly.MonitorManagement\Butterfly.MonitorManagement.csproj", "{ADF54FCB-EE3B-47AA-B598-711BBFFAB59C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butterfly.ServiceModel", "src\Butterfly.ServiceModel\Butterfly.ServiceModel.csproj", "{81F3BA22-37D7-4030-BCE5-3138010E9DE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F016629-32B6-4878-A147-96EF155DCEF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F016629-32B6-4878-A147-96EF155DCEF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F016629-32B6-4878-A147-96EF155DCEF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F016629-32B6-4878-A147-96EF155DCEF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B41FA630-E3EC-4474-A29C-1340E4DC6BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B41FA630-E3EC-4474-A29C-1340E4DC6BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B41FA630-E3EC-4474-A29C-1340E4DC6BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B41FA630-E3EC-4474-A29C-1340E4DC6BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672C0FE9-7888-4B8E-8A9C-0788E2BF6E46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672C0FE9-7888-4B8E-8A9C-0788E2BF6E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672C0FE9-7888-4B8E-8A9C-0788E2BF6E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672C0FE9-7888-4B8E-8A9C-0788E2BF6E46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C1D437B-956B-477D-8A01-3649EDC89261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C1D437B-956B-477D-8A01-3649EDC89261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C1D437B-956B-477D-8A01-3649EDC89261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C1D437B-956B-477D-8A01-3649EDC89261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF54FCB-EE3B-47AA-B598-711BBFFAB59C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF54FCB-EE3B-47AA-B598-711BBFFAB59C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF54FCB-EE3B-47AA-B598-711BBFFAB59C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF54FCB-EE3B-47AA-B598-711BBFFAB59C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81F3BA22-37D7-4030-BCE5-3138010E9DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81F3BA22-37D7-4030-BCE5-3138010E9DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81F3BA22-37D7-4030-BCE5-3138010E9DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81F3BA22-37D7-4030-BCE5-3138010E9DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4F016629-32B6-4878-A147-96EF155DCEF5} = {C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}
+		{B41FA630-E3EC-4474-A29C-1340E4DC6BDD} = {C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}
+		{672C0FE9-7888-4B8E-8A9C-0788E2BF6E46} = {C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}
+		{6C1D437B-956B-477D-8A01-3649EDC89261} = {C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}
+		{ADF54FCB-EE3B-47AA-B598-711BBFFAB59C} = {C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}
+		{81F3BA22-37D7-4030-BCE5-3138010E9DE0} = {C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}
+	EndGlobalSection
+EndGlobal

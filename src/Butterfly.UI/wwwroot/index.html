@@ -1,15 +1,16 @@
-﻿<html ng-app="blogApp">
+﻿<!DOCTYPE html>
+<html ng-app="blogApp">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" />
     <base href="/">
+
+    
     
     <!-- angularjs -->
     <link rel="stylesheet" type="text/css" href="./css/app.animations.css" />
     <script src="./js/angular/1.5.8/angular.min.js"></script>
     <script src="./js/angular/1.5.8/angular-route.min.js"></script>
-    <script src="./js/angular/1.5.9/angular-cookies.min.js"></script>
-    <!--<script src="js/angular/1.5.8/angular-sanitize.min.js"></script>-->
     <script src="./js/angular/1.5.8/angular-animate.min.js"></script>
     <script src="./js/jquery/3.1.1/jquery.min.js"></script>
     <script src="./app/app.js"></script>
@@ -24,6 +25,8 @@
     <script src="./module/article-detail/article-detail.component.js"></script>
     <script src="./module/article-editor/article-editor.module.js"></script>
     <script src="./module/article-editor/article-editor.component.js"></script>
+    <script src="./module/markdown-editor/markdown-editor.module.js"></script>
+    <script src="./module/markdown-editor/markdown-editor.component.js"></script>
     <!-- end of modules -->
 
     <!-- textAngular -->
@@ -42,9 +45,28 @@
     <script src="./js/highlightjs/angular-highlightjs.min.js"></script>
     <!-- end of highlight.js -->
 
+    <!-- showdown -->
+    <script src="./js/showdown/showdown.js"></script>
+    <script src="./js/showdown/extensions/github.js"></script>
+    <!-- end of showdown-->
+
+    <!-- codemirrir: a code-editor -->
+    <link rel="stylesheet" type="text/css" href="./css/codemirror.css" />
+    <script src="./js/codemirror/codemirror.js"></script>
+    <script src="./js/codemirror/addon/mode/overlay.js"></script>
+    <script src="./js/codemirror/mode/gfm/gfm.js"></script>
+    <script src="./js/codemirror/mode/markdown/markdown.js"></script>
+    <!-- end of codemirror-->
+
+    <!-- markdown-editor for angular -->
+    <link rel="stylesheet" type="text/css" href="./css/angular-markdown-editor.css" />
+    <script src="./js/angular-makrdown-editor/angular-markdown-editor.js"></script>
+    <!-- end of markdown-editor for angular -->
+
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="./css/vno.css" />
     <link rel="stylesheet" type="text/css" href="./css/butterfly.css" />
+
     <title>童琦杰的博客</title>
 </head>
 <body class="home-template">
@@ -59,13 +81,13 @@
                     <p class="panel-cover__description">.NET、iOS Developer<br>tongqijie@hotmail.com</p>
                 </div>
             </div>
-            <!--<div class="panel-cover--overlay cover-purple">
-            </div>-->
         </div>
     </header>
 
     <div class="view-container">
         <div ng-view class="view-frame"></div>
     </div>
+
+    
 </body>
 </html>

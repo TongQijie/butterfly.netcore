@@ -26,5 +26,8 @@ namespace Butterfly.ServiceModel
 
         [JsonProperty(Alias = "signature")]
         public string Signature { get; set; }
+
+        [JsonProperty(Alias = "format")]
+        public string Format { get; set; }
     }
 }

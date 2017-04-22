@@ -61,6 +61,16 @@
       "pattern": "^Editor/",
       "value": "",
       "mode": "Override"
+    },
+    {
+      "pattern": "^Markdown",
+      "value": "",
+      "mode": "Override"
+    },
+    {
+      "pattern": "^Markdown/",
+      "value": "",
+      "mode": "Override"
     }
   ]
 }
