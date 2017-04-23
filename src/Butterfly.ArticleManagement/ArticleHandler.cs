@@ -4,6 +4,7 @@ using System.Net;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+using Guru.Markdown;
 using Guru.ExtensionMethod;
 using Guru.DependencyInjection;
 using Guru.Formatter.Abstractions;
@@ -103,7 +104,7 @@ namespace Butterfly.ArticleManagement
             return new ApiResponse()
             {
                 Data = _FileManager.Many<Article>()
-                    .Select(x => new 
+                    .Select(x => new
                     {
                         Weight = fields.Count(y => x.Title.ContainsIgnoreCase(y)) * 3 +
                                  fields.Count(y => WebUtility.HtmlDecode(Regex.Replace(x.Content, "<(.|\n)*?>", string.Empty)).ContainsIgnoreCase(y)),
@@ -145,9 +146,20 @@ namespace Butterfly.ArticleManagement
 
                 var random = Path.GetRandomFileName();
                 article.Id = random.Substring(0, random.IndexOf('.'));
-                article.Abstract = GetAbstract(article.Content ?? string.Empty);
+                
                 article.CreationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 article.ModifiedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                if (article.Format == "markdown")
+                {
+                    var html = MarkdownToHtml(article.Content);
+                    article.Title = GetTitle(html);
+                    article.Abstract = GetAbstract(html);
+                }
+                else
+                {
+                    article.Abstract = GetAbstract(article.Content ?? string.Empty);
+                }
 
                 _JsonFormatter.WriteObject(article, $"./data/{article.Id}.json".FullPath());
 
@@ -181,10 +193,20 @@ namespace Butterfly.ArticleManagement
                 }
 
                 var clone = exists.DeepCopy<Article>();
-                clone.Title = article.Title;
                 clone.Content = article.Content;
-                clone.Abstract = GetAbstract(article.Content ?? string.Empty);
                 clone.ModifiedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                if (article.Format == "markdown")
+                {
+                    var html = MarkdownToHtml(article.Content);
+                    clone.Title = GetTitle(html);
+                    clone.Abstract = GetAbstract(html);
+                }
+                else
+                {
+                    clone.Title = article.Title;
+                    clone.Abstract = GetAbstract(article.Content ?? string.Empty);
+                }
 
                 _JsonFormatter.WriteObject(clone, $"./data/{article.Id}.json".FullPath());
 
@@ -206,14 +228,37 @@ namespace Butterfly.ArticleManagement
             }
         }
 
+        private string MarkdownToHtml(string markdown)
+        {
+            return new MarkdownUtils().Transform(markdown);
+        }
+
+        private string GetTitle(string content)
+        {
+            var match = Regex.Match(content.Trim(), @"^<h1>.+</h1>");
+            if (match != null)
+            {
+                return RemoveHtmlTags(match.Value);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
         private string GetAbstract(string content)
         {
-            var a = WebUtility.HtmlDecode(Regex.Replace(content, "<(.|\n)*?>", string.Empty));
+            var a = RemoveHtmlTags(content);
             if (a.Length > 300)
             {
                 a = a.Substring(0, 300) + "...";
             }
             return a;
+        }
+
+        private string RemoveHtmlTags(string html)
+        {
+            return WebUtility.HtmlDecode(Regex.Replace(html, "<(.|\n)*?>", string.Empty));
         }
     }
 }

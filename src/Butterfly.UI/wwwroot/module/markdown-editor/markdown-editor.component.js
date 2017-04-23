@@ -59,16 +59,22 @@
                 return;
             }
 
-            $scope.editorOptions = {
+            $scope.markdownData = "";
 
-            };
+            $scope.editorOptions = {
+                onLoad: function (editor) {
+                    editor.on('blur', function () {
+                        $scope.markdownData = editor.getValue();
+                    })
+                }
+            }
 
             $http.get('Api/Article/GetArticleById?articleId=' + articleId)
                 .then(function (response) {
                     if (response.status == 200) {
                         if (response.data.Succeeded) {
                             $scope.article = response.data.Data;
-                            $scope.markdownData = response.data.Data.content;
+                            $scope.markdownData = response.data.Data.content || "";
                         }
                         else {
                             // business error

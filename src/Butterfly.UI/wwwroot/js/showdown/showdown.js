@@ -1028,7 +1028,7 @@ var _DoGithubCodeBlocks = function(text) {
 			codeblock = codeblock.replace(/^\n+/g,""); // trim leading newlines
 			codeblock = codeblock.replace(/\n+$/g,""); // trim trailing whitespace
 
-			codeblock = "<pre><code" + (language ? " class=\"" + language + '"' : "") + ">" + codeblock + "\n</code></pre>";
+			codeblock = "<pre" + (language ? " class=\"" + language + '"' : "") + "><code" + ">" + codeblock + "\n</code></pre>";
 
 			return hashBlock(codeblock);
 		}
