@@ -47,6 +47,14 @@
                 }
             });
 
+            $scope.editorOptions = {
+                onLoad: function (editor) {
+                    editor.on('blur', function () {
+                        $scope.markdownData = editor.getValue();
+                    })
+                }
+            }
+
             var articleId = $routeParams.articleId;
             if (articleId == undefined) {
                 $scope.article = {
@@ -58,17 +66,7 @@
                 $scope.markdownData = '';
                 return;
             }
-
-            $scope.markdownData = "";
-
-            $scope.editorOptions = {
-                onLoad: function (editor) {
-                    editor.on('blur', function () {
-                        $scope.markdownData = editor.getValue();
-                    })
-                }
-            }
-
+            
             $http.get('Api/Article/GetArticleById?articleId=' + articleId)
                 .then(function (response) {
                     if (response.status == 200) {
