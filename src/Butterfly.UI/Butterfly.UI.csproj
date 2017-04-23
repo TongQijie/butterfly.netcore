@@ -10,13 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\js\markdownjs\0.5.0\markdown.js" />
-    <Content Include="wwwroot\module\markdown-editor\markdown-editor.component.js" />
-    <Content Include="wwwroot\module\markdown-editor\markdown-editor.module.js" />
-    <Content Include="wwwroot\module\markdown-editor\markdown-editor.template.html" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="wwwroot\**\*;configuration\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
