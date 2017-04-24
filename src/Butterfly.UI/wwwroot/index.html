@@ -5,8 +5,27 @@
     <meta name="viewport" content="width=device-width" />
     <base href="/">
 
-    
-    
+    <title>童琦杰的博客</title>
+</head>
+<body class="home-template">
+    <header class="panel-cover  panel-cover--collapsed">
+        <div class="panel-main">
+            <div class="panel-main__inner panel-inverted">
+                <div class="panel-main__content">
+                    <a href="./"><img src="./img/avatar.jpg" width="150" alt="logo" class="panel-cover__logo logo"></a>
+                    <h1 class="panel-cover__title panel-title"><a href="./">童琦杰</a></h1>
+                    <span class="panel-cover__subtitle panel-subtitle">向死而生</span>
+                    <hr class="panel-cover__divider">
+                    <p class="panel-cover__description">.NET、iOS Developer<br>tongqijie@hotmail.com</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="view-container">
+        <div ng-view class="view-frame"></div>
+    </div>
+
     <!-- angularjs -->
     <link rel="stylesheet" type="text/css" href="./css/app.animations.css" />
     <script src="./js/angular/1.5.8/angular.min.js"></script>
@@ -66,28 +85,5 @@
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="./css/vno.css" />
     <link rel="stylesheet" type="text/css" href="./css/butterfly.css" />
-
-    <title>童琦杰的博客</title>
-</head>
-<body class="home-template">
-    <header class="panel-cover  panel-cover--collapsed">
-        <div class="panel-main">
-            <div class="panel-main__inner panel-inverted">
-                <div class="panel-main__content">
-                    <a href="./"><img src="./img/avatar.jpg" width="150" alt="logo" class="panel-cover__logo logo"></a>
-                    <h1 class="panel-cover__title panel-title"><a href="./">童琦杰</a></h1>
-                    <span class="panel-cover__subtitle panel-subtitle">向死而生</span>
-                    <hr class="panel-cover__divider">
-                    <p class="panel-cover__description">.NET、iOS Developer<br>tongqijie@hotmail.com</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="view-container">
-        <div ng-view class="view-frame"></div>
-    </div>
-
-    
 </body>
 </html>

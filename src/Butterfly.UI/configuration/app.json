@@ -33,42 +33,7 @@
   ],
   "rewrites": [
     {
-      "pattern": "^Page$",
-      "value": "",
-      "mode": "Override"
-    },
-    {
-      "pattern": "^Page/",
-      "value": "",
-      "mode": "Override"
-    },
-    {
-      "pattern": "^Article$",
-      "value": "",
-      "mode": "Override"
-    },
-    {
-      "pattern": "^Article/",
-      "value": "",
-      "mode": "Override"
-    },
-    {
-      "pattern": "^Editor$",
-      "value": "",
-      "mode": "Override"
-    },
-    {
-      "pattern": "^Editor/",
-      "value": "",
-      "mode": "Override"
-    },
-    {
-      "pattern": "^Markdown",
-      "value": "",
-      "mode": "Override"
-    },
-    {
-      "pattern": "^Markdown/",
+      "pattern": "^(article|page|editor|markdown){1}($|/)",
       "value": "",
       "mode": "Override"
     }
