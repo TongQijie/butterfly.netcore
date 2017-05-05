@@ -1,4 +1,7 @@
 {
+  "servicePrefixes": [
+    "api"
+  ],
   "routes": [
     {
       "key": "default",
