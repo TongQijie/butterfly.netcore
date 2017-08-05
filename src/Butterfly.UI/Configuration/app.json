@@ -1,10 +1,10 @@
 {
   "router": {
-    "default": "res/index.html",
+    "default": "index.html",
     "rewrites": [
       {
         "pattern": "^(page|article|editor|markdown){1}($|/)",
-        "value": "res/index.html",
+        "value": "index.html",
         "mode": "Override"
       }
     ]
