@@ -1,10 +1,12 @@
-using Guru.DependencyInjection;
+using Guru.DependencyInjection.Attributes;
+using Guru.Formatter.Json;
 
 namespace Butterfly.Configuration
 {
-    [FileDI(typeof(IApiConfiguration), "./configuration/api.json", Format = FileFormat.Json)]
+    [StaticFile(typeof(IApiConfiguration), "./Configuration/api.json", Format = "json")]
     public class ApiConfiguration : IApiConfiguration
     {
+        [JsonProperty(Alias = "apiKey")]
         public string ApiKey { get; set; }
     }
 }

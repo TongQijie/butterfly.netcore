@@ -8,23 +8,20 @@ using Guru.Markdown;
 using Guru.ExtensionMethod;
 using Guru.DependencyInjection;
 using Guru.Formatter.Abstractions;
-using Guru.DependencyInjection.Abstractions;
 
 using Butterfly.ServiceModel;
 using Butterfly.Configuration;
+using Guru.DependencyInjection.Attributes;
 
 namespace Butterfly.ArticleManagement
 {
-    [DI(typeof(IArticleHandler), Lifetime = Lifetime.Singleton)]
+    [Injectable(typeof(IArticleHandler), Lifetime.Singleton)]
     public class ArticleHandler : IArticleHandler
     {
-        private readonly IFileManager _FileManager;
-
         private readonly IJsonFormatter _JsonFormatter;
 
-        public ArticleHandler(IFileManager fileManager, IJsonFormatter jsonFormatter)
+        public ArticleHandler(IJsonFormatter jsonFormatter)
         {
-            _FileManager = fileManager;
             _JsonFormatter = jsonFormatter;
         }
 
@@ -42,7 +39,7 @@ namespace Butterfly.ArticleManagement
             return new ApiResponse()
             {
                 Succeeded = true,
-                Data = _FileManager.Many<Article>().FirstOrDefault(x => x.Id == item.Value)
+                Data = ContainerManager.Default.Resolve<ArticleCollection>().FirstOrDefault(x => x.Id == item.Value)
             };
         }
 
@@ -56,7 +53,7 @@ namespace Butterfly.ArticleManagement
                 };
             }
 
-            var articles = _FileManager.Many<Article>();
+            var articles = ContainerManager.Default.Resolve<ArticleCollection>();
 
             return new ApiResponse()
             {
@@ -74,7 +71,7 @@ namespace Butterfly.ArticleManagement
                 {
                     PageNumber = request.Paging.PageNumber,
                     PageSize = request.Paging.PageSize,
-                    TotalPages = articles.Length / request.Paging.PageSize + ((articles.Length % request.Paging.PageSize) > 0 ? 1 : 0),
+                    TotalPages = articles.Count / request.Paging.PageSize + ((articles.Count % request.Paging.PageSize) > 0 ? 1 : 0),
                 },
             };
         }
@@ -103,7 +100,7 @@ namespace Butterfly.ArticleManagement
 
             return new ApiResponse()
             {
-                Data = _FileManager.Many<Article>()
+                Data = ContainerManager.Default.Resolve<ArticleCollection>()
                     .Select(x => new
                     {
                         Weight = fields.Count(y => x.Title.ContainsIgnoreCase(y)) * 3 +
@@ -124,7 +121,7 @@ namespace Butterfly.ArticleManagement
         public ApiResponse OperateArticle(ApiRequest request)
         {
             var apiKey = request.Items.FirstOrDefault(x => x.Key.EqualsIgnoreCase("apikey"))?.Value;
-            if (!apiKey.HasValue() || !apiKey.EqualsIgnoreCase(_FileManager.Single<IApiConfiguration>().ApiKey))
+            if (!apiKey.HasValue() || !apiKey.EqualsIgnoreCase(ContainerManager.Default.Resolve<IApiConfiguration>().ApiKey))
             {
                 return new ApiResponse()
                 {
@@ -161,7 +158,7 @@ namespace Butterfly.ArticleManagement
                     article.Abstract = GetAbstract(article.Content ?? string.Empty);
                 }
 
-                _JsonFormatter.WriteObject(article, $"./data/{article.Id}.json".FullPath());
+                _JsonFormatter.WriteObject(new ArticleCollection() { article }, $"./data/{article.Id}.json".FullPath());
 
                 return new ApiResponse()
                 {
@@ -183,7 +180,7 @@ namespace Butterfly.ArticleManagement
                     };
                 }
 
-                var exists = _FileManager.Many<Article>().FirstOrDefault(x => x.Id.EqualsIgnoreCase(article.Id));
+                var exists = ContainerManager.Default.Resolve<ArticleCollection>().FirstOrDefault(x => x.Id.EqualsIgnoreCase(article.Id));
                 if (exists == null)
                 {
                     return new ApiResponse()
@@ -208,7 +205,7 @@ namespace Butterfly.ArticleManagement
                     clone.Abstract = GetAbstract(article.Content ?? string.Empty);
                 }
 
-                _JsonFormatter.WriteObject(clone, $"./data/{article.Id}.json".FullPath());
+                _JsonFormatter.WriteObject(new ArticleCollection() { clone }, $"./data/{article.Id}.json".FullPath());
 
                 return new ApiResponse()
                 {

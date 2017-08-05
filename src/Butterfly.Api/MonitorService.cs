@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
 using Butterfly.MonitorManagement;
 using Butterfly.ServiceModel;
-using Guru.Middleware.RESTfulService;
+using Guru.AspNetCore.Attributes;
 
 namespace Butterfly.Api
-{    
-    [Service("Monitor", Prefix = "Api")]
+{
+    [ApiService("Monitor")]
     public class MonitorService
     {
         private readonly IMonitorHandler _MonitorHandler;
@@ -15,7 +15,7 @@ namespace Butterfly.Api
             _MonitorHandler = monitorHandler;
         }
 
-        [Method(Name = "GetDownloadLinks", HttpVerb = HttpVerb.GET, Response = ContentType.Json)]
+        [ApiMethod("GetDownloadLinks")]
         public async Task<ApiResponse> GetDownloadLinks()
         {
             return await _MonitorHandler.GetDownloadLinks();
