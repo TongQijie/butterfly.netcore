@@ -32,6 +32,10 @@
     {
       "type": "ico",
       "content": "image/x-icon"
+    },
+    {
+      "type": "gif",
+      "content": "image/gif"
     }
   ],
   "rewrites": [
