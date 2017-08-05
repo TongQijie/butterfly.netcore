@@ -10,10 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="wwwroot\**\*;Configuration\**\*">
+    <Content Update="wwwroot\**\*;Configuration\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </None>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
