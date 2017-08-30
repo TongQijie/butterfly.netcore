@@ -12,10 +12,10 @@
     </div>
 </div>
 <div class="content-wrapper">
-    <div class="bubblingG" ng-hide="loading == false">
-        <span id="bubblingG_1"></span>
-        <span id="bubblingG_2"></span>
-        <span id="bubblingG_3"></span>
+    <div ng-hide="loading == false">
+        <div class="list-loading">
+            <img src="./img/loading.gif">
+        </div>
     </div>
     <div class="main-post-list" ng-hide="keywords.length > 0 || loading">
         <div class="content-wrapper__inner">

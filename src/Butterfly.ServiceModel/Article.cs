@@ -1,9 +1,8 @@
 using Guru.Formatter.Json;
-using Guru.DependencyInjection;
+using Guru.DependencyInjection.Attributes;
 
 namespace Butterfly.ServiceModel
 {
-    [FileDI(typeof(Article), "./data/*.json", Format = FileFormat.Json, Multiply = true)]
     public class Article
     {
         [JsonProperty(Alias = "id")]

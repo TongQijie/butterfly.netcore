@@ -10,10 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="wwwroot\**\*;Configuration\**\*">
+    <Content Update="wwwroot\**\*;Configuration\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </None>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,9 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.0.3" />
-    <PackageReference Include="Guru" Version="1.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.2" />
+    <PackageReference Include="Guru" Version="1.0.27" />
   </ItemGroup>
 
 </Project>

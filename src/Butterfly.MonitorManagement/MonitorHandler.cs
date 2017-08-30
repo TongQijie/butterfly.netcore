@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Guru.DependencyInjection;
-using Guru.DependencyInjection.Abstractions;
+using Guru.DependencyInjection.Attributes;
 
 namespace Butterfly.MonitorManagement
 {
-    [DI(typeof(IMonitorHandler), Lifetime = Lifetime.Singleton)]
+    [Injectable(typeof(IMonitorHandler), Lifetime.Singleton)]
     public class MonitorHandler : IMonitorHandler
     {
         private readonly IFormatter _Formatter;

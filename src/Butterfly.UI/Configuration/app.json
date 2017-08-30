@@ -1,0 +1,24 @@
+{
+  "router": {
+    "default": "index.html",
+    "rewrites": [
+      {
+        "pattern": "^(page|article|editor|markdown){1}($|/)",
+        "value": "index.html",
+        "mode": "Override"
+      }
+    ]
+  },
+  "res": {
+    "prefix": null,
+    "mineTypes": {
+      "html": "text/html",
+      "js": "application/x-javascript",
+      "css": "text/css",
+      "woff": "application/font-woff",
+      "jpg": "image/jpeg",
+      "ico": "image/x-icon",
+      "gif": "image/gif"
+    }
+  }
+}
