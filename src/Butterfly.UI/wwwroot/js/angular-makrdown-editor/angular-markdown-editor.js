@@ -577,6 +577,7 @@
                 link: function (scope, element, attrs) {
                     element.addClass('ng-binding-markdown').data('$bindingMarkdown', attrs.ngBindMarkdown);
                     scope.$watch(attrs.ngBindMarkdown, debounce(function bindMarkdownWatchAction(value) {
+                        if (value == undefined) { return; }
                         var converter = new showdown.Converter({tables: true});
                         var markdown = value || '';
                         var htmlText = converter.makeHtml(markdown);
