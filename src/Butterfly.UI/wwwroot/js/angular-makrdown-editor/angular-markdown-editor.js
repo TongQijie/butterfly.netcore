@@ -577,10 +577,10 @@
                 link: function (scope, element, attrs) {
                     element.addClass('ng-binding-markdown').data('$bindingMarkdown', attrs.ngBindMarkdown);
                     scope.$watch(attrs.ngBindMarkdown, debounce(function bindMarkdownWatchAction(value) {
-                        var converter = new Showdown.converter();
+                        var converter = new showdown.Converter({tables: true});
                         var markdown = value || '';
                         var htmlText = converter.makeHtml(markdown);
-                        element.html(htmlText);
+                        element.html(htmlText.replace('<table>', '<table class="table table-striped">'));
                     }, 50));
                 }
             };

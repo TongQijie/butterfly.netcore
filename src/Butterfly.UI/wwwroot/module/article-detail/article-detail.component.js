@@ -12,8 +12,8 @@ angular.module('articleDetail').component('articleDetail', {
                             self.article = response.data.Data;
                             if (response.data.Data.format == "markdown") {
                                 self.editorUrl = './markdown/' + response.data.Data.id;
-                                var converter = new Showdown.converter({ extensions: ['github'] });
-                                $scope.html = converter.makeHtml(response.data.Data.content);
+                                var converter = new showdown.Converter({ tables: true });
+                                $scope.html = converter.makeHtml(response.data.Data.content).replace('<table>', '<table class="table table-striped">');
                             }
                             else {
                                 self.editorUrl = './editor/' + response.data.Data.id;
