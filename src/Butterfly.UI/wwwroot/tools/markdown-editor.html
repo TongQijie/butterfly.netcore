@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Markdown-Editor</title>
+</head>
+
+<body style="margin:0px;">
+    <div style="position:absolute;width:100%;height:100%;">
+        <div style="position:absolute;width:50%;height:100%;">
+            <textarea style="position:absolute;width:100%;height:100%;border:none;outline:none;resize:none;padding:10px;font-family:monospace;border-right:1px solid #9E9E9E;" 
+                      id="input" onchange="convert(this.id)" onkeyup="convert(this.id)"></textarea>
+        </div>
+        <div style="position:absolute;width:50%;margin-left:50%;">
+            <div id="html" style="padding:10px"></div>
+        </div>
+    </div>
+
+    <link rel='stylesheet' href="/css/bootstrap.min.css " />
+    <script src="/js/showdown/1.7.3/showdown.min.js "></script>
+
+    <script type="text/javascript">
+        function convert(x) {
+            var markdown = document.getElementById(x).value || '';
+            var converter = new showdown.Converter({tables: true});
+            document.getElementById('html').innerHTML = converter.makeHtml(markdown).replace('<table>', '<table class="table table-striped">');
+        }
+    </script>
+</body>
+
+</html>
