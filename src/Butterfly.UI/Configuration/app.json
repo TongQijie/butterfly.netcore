@@ -18,7 +18,8 @@
       "woff": "application/font-woff",
       "jpg": "image/jpeg",
       "ico": "image/x-icon",
-      "gif": "image/gif"
+      "gif": "image/gif",
+      "md": "text/plain"
     }
   }
 }
