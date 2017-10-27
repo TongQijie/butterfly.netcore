@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Guru" Version="1.0.27" />
+    <PackageReference Include="Guru" Version="1.0.35" />
   </ItemGroup>
 
 </Project>

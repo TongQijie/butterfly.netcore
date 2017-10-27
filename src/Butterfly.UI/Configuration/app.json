@@ -21,5 +21,8 @@
       "gif": "image/gif",
       "md": "text/plain"
     }
+  },
+  "api": {
+    "enableLog": true
   }
 }
