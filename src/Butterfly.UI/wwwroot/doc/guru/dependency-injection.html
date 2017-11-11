@@ -8,30 +8,42 @@
 </head>
 
 <body style="margin:0px;">
-    <div id="html" style="padding:10px 20px;"></div>
+    <div style="position:absolute;width:100%;height:100%;">
+        <div style="position:absolute;width:300px;height:100%;">
+
+        </div>
+        <div style="position:absolute;width:auto;height:100%;margin-left:300px;">
+            <div id="content" style="padding:10px 20px;"></div>
+        </div>
+    </div>
 
     <link rel='stylesheet' href="/css/bootstrap.min.css " />
     <script src="/js/showdown/1.7.3/showdown.min.js "></script>
     <script type="text/javascript">
-        function httpGet(url) {
+        function httpGet(url, success) {
             var http = new XMLHttpRequest();
             if (http != null) {
-                http.onreadystatechange = httpStateChanged;
+                http.onreadystatechange = function (event) {
+                    if (event.target.readyState == 4 && event.target.status == 200) {
+                        //convert(event.target.responseText);
+                        success(id, )
+                    }
+                };
                 http.open("GET", url, true);
                 http.send(null);
             }
         }
 
-        function httpStateChanged(http) {
-            if (http.readyState == 4 && http.status == 200) {
-                convert(http.responseText);
+        function httpStateChanged(event) {
+            if (event.target.readyState == 4 && event.target.status == 200) {
+                convert(event.target.responseText);
             }
         }
 
-        function convert(x) {
-            var markdown = x || '';
+        function convert(id, md) {
+            var markdown = md || '';
             var converter = new showdown.Converter({ tables: true, noHeaderId: true });
-            document.getElementById('html').innerHTML = converter.makeHtml(markdown).replace('<table>', '<table class="table table-striped">');
+            document.getElementById(id).innerHTML = converter.makeHtml(markdown).replace('<table>', '<table class="table table-striped">');
         }
 
         httpGet("/doc/guru/dependency-injection.md");
