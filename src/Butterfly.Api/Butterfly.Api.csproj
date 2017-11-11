@@ -9,13 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Butterfly.ServiceModel/Butterfly.ServiceModel.csproj" />
-    <ProjectReference Include="../Butterfly.ArticleManagement/Butterfly.ArticleManagement.csproj" />
-    <ProjectReference Include="../Butterfly.MonitorManagement/Butterfly.MonitorManagement.csproj" />
+    <PackageReference Include="Guru" Version="1.0.36" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Guru" Version="1.0.27" />
+    <ProjectReference Include="../Butterfly.ServiceModel/Butterfly.ServiceModel.csproj" />
+    <ProjectReference Include="../Butterfly.ArticleManagement/Butterfly.ArticleManagement.csproj" />
+    <ProjectReference Include="../Butterfly.MonitorManagement/Butterfly.MonitorManagement.csproj" />
   </ItemGroup>
 
 </Project>

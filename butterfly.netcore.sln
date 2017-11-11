@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butterfly.UI", "src\Butterfly.UI\Butterfly.UI.csproj", "{4F016629-32B6-4878-A147-96EF155DCEF5}"
 EndProject
@@ -58,5 +58,8 @@ Global
 		{6C1D437B-956B-477D-8A01-3649EDC89261} = {C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}
 		{ADF54FCB-EE3B-47AA-B598-711BBFFAB59C} = {C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}
 		{81F3BA22-37D7-4030-BCE5-3138010E9DE0} = {C2D0A6BD-5D59-494D-B2DC-B29EB17F75D3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FD5927C-6539-4637-8FC6-9874FEDDC1CD}
 	EndGlobalSection
 EndGlobal

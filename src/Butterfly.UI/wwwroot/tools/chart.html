@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="/js/chartjs/Chart.js"></script>
+</head>
+
+<body>
+    <h1 style="text-align:center">hello, asp.net core!</h1>
+    <div style="width:75%;">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var ctx = document.getElementById("canvas").getContext("2d");
+                window.myLine = new Chart(ctx, JSON.parse(xhr.responseText));
+            }
+        }
+        xhr.open('GET', "http://localhost:5000/api/monitor/getchart", true);
+        xhr.send();
+    </script>
+</body>
+
+</html>
