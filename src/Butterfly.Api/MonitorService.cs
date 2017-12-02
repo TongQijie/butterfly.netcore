@@ -5,7 +5,7 @@ using Guru.AspNetCore.Attributes;
 
 namespace Butterfly.Api
 {
-    [ApiService("Monitor")]
+    [Api("Monitor")]
     public class MonitorService
     {
         private readonly IMonitorHandler _MonitorHandler;

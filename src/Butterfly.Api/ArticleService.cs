@@ -9,7 +9,7 @@ using Guru.AspNetCore.Attributes;
 
 namespace Butterfly.Api
 {
-    [ApiService("Article")]
+    [Api("Article")]
     public class ArticleService
     {
         private readonly IArticleHandler _Handler;

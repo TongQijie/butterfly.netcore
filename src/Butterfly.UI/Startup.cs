@@ -21,8 +21,8 @@ namespace Butterfly.UI
                 .ConfigureServices(x => x.AddSingleton<IHttpContextAccessor, HttpContextAccessor>())
                 .Configure(x =>
                 {
-                    HttpContextUtil.Configure(x.ApplicationServices.GetRequiredService<IHttpContextAccessor>());
-                    x.UseMiddleware<AspNetCoreInstance>();
+                    HttpContextUtils.Configure(x.ApplicationServices.GetRequiredService<IHttpContextAccessor>());
+                    x.UseMiddleware<AspNetCoreAppInstance>();
                 })
                 .Build()
                 .Run();
