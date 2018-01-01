@@ -1,15 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
-    <DebugType>portable</DebugType>
-    <AssemblyName>Butterfly.Configuration</AssemblyName>
-    <PackageId>Butterfly.Configuration</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Guru" Version="1.2.0" />
+    <PackageReference Include="Guru" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

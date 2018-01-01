@@ -69,7 +69,7 @@ namespace Butterfly.Api
         [ApiMethod("UploadFile")]
         public ApiResponse UploadFile(FileEntity file, string apiKey)
         {
-            if (ContainerManager.Default.Resolve<IApiConfiguration>().ApiKey == apiKey)
+            if (DependencyContainer.Resolve<IApiConfiguration>().ApiKey == apiKey)
             {
                 var data = Convert.FromBase64String(file.Base64);
                 using (var outputStream = new FileStream(file.Path, FileMode.Create, FileAccess.Write))

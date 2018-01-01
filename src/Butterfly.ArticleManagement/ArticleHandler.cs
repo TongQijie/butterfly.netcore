@@ -39,7 +39,7 @@ namespace Butterfly.ArticleManagement
             return new ApiResponse()
             {
                 Succeeded = true,
-                Data = ContainerManager.Default.Resolve<ArticleCollection>().FirstOrDefault(x => x.Id == item.Value)
+                Data = DependencyContainer.Resolve<ArticleCollection>().FirstOrDefault(x => x.Id == item.Value)
             };
         }
 
@@ -53,7 +53,7 @@ namespace Butterfly.ArticleManagement
                 };
             }
 
-            var articles = ContainerManager.Default.Resolve<ArticleCollection>();
+            var articles = DependencyContainer.Resolve<ArticleCollection>();
 
             return new ApiResponse()
             {
@@ -100,7 +100,7 @@ namespace Butterfly.ArticleManagement
 
             return new ApiResponse()
             {
-                Data = ContainerManager.Default.Resolve<ArticleCollection>()
+                Data = DependencyContainer.Resolve<ArticleCollection>()
                     .Select(x => new
                     {
                         Weight = fields.Count(y => x.Title.ContainsIgnoreCase(y)) * 3 +
@@ -121,7 +121,7 @@ namespace Butterfly.ArticleManagement
         public ApiResponse OperateArticle(ApiRequest request)
         {
             var apiKey = request.Items.FirstOrDefault(x => x.Key.EqualsIgnoreCase("apikey"))?.Value;
-            if (!apiKey.HasValue() || !apiKey.EqualsIgnoreCase(ContainerManager.Default.Resolve<IApiConfiguration>().ApiKey))
+            if (!apiKey.HasValue() || !apiKey.EqualsIgnoreCase(DependencyContainer.Resolve<IApiConfiguration>().ApiKey))
             {
                 return new ApiResponse()
                 {
@@ -180,7 +180,7 @@ namespace Butterfly.ArticleManagement
                     };
                 }
 
-                var exists = ContainerManager.Default.Resolve<ArticleCollection>().FirstOrDefault(x => x.Id.EqualsIgnoreCase(article.Id));
+                var exists = DependencyContainer.Resolve<ArticleCollection>().FirstOrDefault(x => x.Id.EqualsIgnoreCase(article.Id));
                 if (exists == null)
                 {
                     return new ApiResponse()

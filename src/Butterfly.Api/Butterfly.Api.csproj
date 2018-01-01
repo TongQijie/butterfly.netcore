@@ -1,21 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
-    <DebugType>portable</DebugType>
-    <AssemblyName>Butterfly.Api</AssemblyName>
-    <PackageId>Butterfly.Api</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Guru" Version="1.2.0" />
+    <PackageReference Include="Guru" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../Butterfly.ServiceModel/Butterfly.ServiceModel.csproj" />
     <ProjectReference Include="../Butterfly.ArticleManagement/Butterfly.ArticleManagement.csproj" />
-    <ProjectReference Include="../Butterfly.MonitorManagement/Butterfly.MonitorManagement.csproj" />
   </ItemGroup>
 
 </Project>
